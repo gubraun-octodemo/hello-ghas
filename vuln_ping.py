@@ -12,6 +12,14 @@ def print_name_length(user):
 
 
 if __name__ == "__main__":
+    import os
+    if os.environ.get("CODEQL_DEMO") != "1":
+        raise SystemExit("Refusing to run vulnerable demo. Set CODEQL_DEMO=1 to execute.")
+
     user_input = input("Host to ping: ")
     print(run_ping(user_input))
-    print_name_length(None)
+
+    try:
+        print_name_length(None)
+    except Exception as exc:
+        print(f"Expected demo failure: {exc}")
