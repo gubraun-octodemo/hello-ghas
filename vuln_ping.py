@@ -19,7 +19,5 @@ if __name__ == "__main__":
     user_input = input("Host to ping: ")
     print(run_ping(user_input))
 
-    try:
-        print_name_length(None)
-    except Exception as exc:
-        print(f"Expected demo failure: {exc}")
+    print_name_length(None)
+    
