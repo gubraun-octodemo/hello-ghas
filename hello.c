@@ -4,6 +4,7 @@
 static void codeql_buffer_overflow_test_case(const char *input)
 {
     char buffer[8];
+    /* Intentionally unsafe CodeQL test case. */
     strcpy(buffer, input);
     puts(buffer);
 }
