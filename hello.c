@@ -1,5 +1,18 @@
+#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+
+int create_report(const char *path) {
+    if (access(path, W_OK) == 0) {     // Check
+        FILE *file = fopen(path, "w"); // Use: path may have changed
+        if (!file) return -1;
+
+        fputs("report\n", file);
+        fclose(file);
+    }
+
+    return 0;
+}
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +27,6 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    printf("Hello GHAS\n");
+    create_report("/tmp/toctou.txt");
     return 0;
 }
