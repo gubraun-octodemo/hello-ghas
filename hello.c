@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     if (argc > 1) {
         char message[16] = "Hello ";
-        strcat(message, argv[1]);
+        strncat(message, argv[1], sizeof(message) - strlen(message) - 1);
         puts(message);
         return 0;
     }
